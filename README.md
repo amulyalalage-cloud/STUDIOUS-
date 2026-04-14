@@ -1,2 +1,3 @@
 # STUDIOUS-
 THIS IS MY FIRST GIT REPOSITORY 
+Author - Amulya
