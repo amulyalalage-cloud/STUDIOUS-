@@ -1,34 +1,34 @@
-function addTask() {
-  let taskInput = document.getElementById("taskInput");
-  let dateInput = document.getElementById("dateInput");
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const quotes = [
+  "Push yourself, because no one else will do it for you.",
+  "Success is the sum of small efforts repeated daily.",
+  "Focus on being productive instead of busy.",
+  "Dream big. Start small. Act now.",
+  "Discipline beats motivation."
+];
 
-  let task = taskInput.value;
-  let date = dateInput.value;
-
-  if (task === "") {
-    alert("Please enter a task!");
-    return;
-  }
-
-  let li = document.createElement("li");
-
-  li.innerHTML = `
-    <span onclick="toggleDone(this)">
-      ${task} - ${date}
-    </span>
-    <button onclick="deleteTask(this)">❌</button>
-  `;
-
-  document.getElementById("taskList").appendChild(li);
-
-  taskInput.value = "";
-  dateInput.value = "";
+function loadQuote() {
+  const random = Math.floor(Math.random() * quotes.length);
+  document.getElementById("quote").innerText = quotes[random];
 }
 
-function deleteTask(button) {
-  button.parentElement.remove();
-}
+loadQuote();
 
-function toggleDone(span) {
-  span.classList.toggle("done");
+function updateProgress() {
+  const total = tasks.length;
+  const completed = tasks.filter(t => t.completed).length;
+
+  const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+  document.getElementById("progressText").innerText = percent + "%";
+  document.getElementById("progressFill").style.width = percent + "%";
+}
+updateProgress();
+renderTasks();
+if (percent < 40) {
+  document.getElementById("progressFill").style.background = "red";
+} else if (percent < 80) {
+  document.getElementById("progressFill").style.background = "orange";
+} else {
+  document.getElementById("progressFill").style.background = "green";
 }
