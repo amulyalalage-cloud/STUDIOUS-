@@ -1,17 +1,39 @@
-<h1>📚 Study Planner</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-<p id="quote"></p>
+<body>
 
-<div class="tracker">
-  <p>Progress: <span id="progressText">0%</span></p>
-  <div class="progress-bar">
-    <div id="progressFill"></div>
+  <h1>📚 Study Planner</h1>
+
+  <p id="quote"></p>
+
+  <div class="input-section">
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <input type="date" id="dateInput">
+    <button onclick="addTask()">Add Task</button>
   </div>
-</div>
 
-<div class="pomodoro">
-  <h2>⏱️ Pomodoro Timer</h2>
-  <p id="timer">25:00</p>
-  <button onclick="startTimer()">Start</button>
-  <button onclick="resetTimer()">Reset</button>
-</div>
+  <div class="tracker">
+    <p>Progress: <span id="progressText">0%</span></p>
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+  </div>
+
+  <div class="pomodoro">
+    <h2>⏱️ Pomodoro Timer</h2>
+    <p id="timer">25:00</p>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
